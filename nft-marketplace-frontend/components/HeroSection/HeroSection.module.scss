@@ -1,0 +1,106 @@
+@import '../../styles/theme.scss';
+
+.heroContainer {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+
+.heroImg {
+    width: 100%;
+    object-fit: cover;
+    height: 100vh;
+}
+
+.overlay {
+    content: '';
+    display: block;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom,
+            hsla(0, 0%, 0%, 0.61) 0%,
+            hsla(0, 0%, 0%, 0.602) 8.1%,
+            hsla(0, 0%, 0%, 0.58) 15.5%,
+            hsla(0, 0%, 0%, 0.547) 22.5%,
+            hsla(0, 0%, 0%, 0.503) 29%,
+            hsla(0, 0%, 0%, 0.452) 35.3%,
+            hsla(0, 0%, 0%, 0.395) 41.2%,
+            hsla(0, 0%, 0%, 0.335) 47.1%,
+            hsla(0, 0%, 0%, 0.275) 52.9%,
+            hsla(0, 0%, 0%, 0.215) 58.8%,
+            hsla(0, 0%, 0%, 0.158) 64.7%,
+            hsla(0, 0%, 0%, 0.107) 71%,
+            hsla(0, 0%, 0%, 0.063) 77.5%,
+            hsla(0, 0%, 0%, 0.03) 84.5%,
+            hsla(0, 0%, 0%, 0.008) 91.9%,
+            hsla(0, 0%, 0%, 0) 100%);
+}
+
+.downArrow {
+    position: absolute;
+    z-index: 2;
+    bottom: 10px;
+    left: 50%;
+    right: 50%;
+    width: 40px !important;
+    height: 40px !important;
+    color: $white  !important;
+    animation-name: goDown;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    transform: translateX(-50%);
+}
+
+.text {
+    position: absolute;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    animation-name: name_appearing;
+    animation-timing-function: ease-in;
+    animation-duration: 1s;
+    animation-iteration-count: 1;
+    font-size: 230px;
+    font-weight: 900;
+    font-family: Montserrat, sans-serif;
+    white-space: 'pre';
+    cursor: default;
+    width: 100%;
+    height: 100%;
+}
+
+.videoBg {
+    // background: 'pouring_wine.mp4';
+    mix-blend-mode: lighten;
+}
+
+@-webkit-keyframes name_appearing {
+    0% {
+      -webkit-transform: translateY(-50px);
+              transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  @keyframes name_appearing {
+    0% {
+      -webkit-transform: translateY(-50px);
+              transform: translateY(-50px);
+      opacity: 0;
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
