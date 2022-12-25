@@ -1,12 +1,11 @@
-import styles from '../styles/Marketplace.module.css'
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
 
-export interface IMarketplaceProps {
+export interface IWineriesProps {
 
 }
 
-const Marketplace = (props: IMarketplaceProps) => {
+const Wineries = () => {
 
     return(
         <>
@@ -17,4 +16,4 @@ const Marketplace = (props: IMarketplaceProps) => {
     );
 };
 
-export default Marketplace;
+export default Wineries;

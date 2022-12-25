@@ -1,8 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
+import { alertsSlice } from './slices/AlertsSlice';
+import { connectAccountSlice } from './slices/ConnectAccountSlice';
+import { loadingSlice } from './slices/LoadingSlice';
 
 export const store = configureStore({
   reducer: {
-    
+    connectAccount: connectAccountSlice.reducer,
+    alert: alertsSlice.reducer,
+    loading: loadingSlice.reducer
   },
 });
 

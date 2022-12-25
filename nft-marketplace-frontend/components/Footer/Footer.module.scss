@@ -1,0 +1,66 @@
+@import '../../styles/theme.scss';
+
+.footerSection {
+    height: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin: 30px 50px;
+}
+
+.projectText {
+
+}
+
+.leftSocialContainer {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.linkedin {
+    width: 30px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.github {
+    width: 30px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+.windows {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.youtube {
+    cursor: pointer;
+}
+
+.win95Modal {
+    width: 60%;
+    height: 300px;
+} 
+
+.win95Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 40px!important;
+}
+
+.closeWin95Icon {
+}
+
+.danger {
+    font-size: 16px;
+    color: red;
+    margin: 10px 0px;
+}
+
+.closeButton {
+    margin-top: 20px;
+}

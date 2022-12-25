@@ -17,12 +17,23 @@
     "@types/node": "18.11.9",
     "@types/react": "18.0.24",
     "@types/react-dom": "18.0.8",
+    "@types/styled-components": "^5.1.26",
+    "@types/xstyled__styled-components": "^1.19.2",
     "framer-motion": "^7.6.4",
     "next": "13.0.1",
+    "nft.storage": "^7.0.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-icons": "^4.7.1",
     "react-redux": "^8.0.5",
+    "react95": "^4.0.0",
     "sass": "^1.56.0",
-    "typescript": "4.8.4"
+    "styled-components": "^5.3.6",
+    "typescript": "4.8.4",
+    "web3": "^1.8.1"
+  },
+  "devDependencies": {
+    "next-fonts": "^1.5.1",
+    "next-transpile-modules": "^10.0.0"
   }
 }
