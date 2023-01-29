@@ -15,6 +15,9 @@ const HowItWorks = () => {
         <>
             <Header />
 
+            <p style={{padding: '100px 0px 0px', display: 'flex', justifyContent: 'center'}}>This section is work in progess!</p>
+            <p style={{padding: '0px 0px 100px 0px', display: 'flex', justifyContent: 'center'}}>Check it again in some days if the feature has been released!</p>
+                
             <Footer />
         </>
     );

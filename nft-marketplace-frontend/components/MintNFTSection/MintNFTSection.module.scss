@@ -1,0 +1,44 @@
+@import '../../styles/theme.scss';
+
+.mintSection {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px 0px;
+    background-color: $themePrimary--light--2;
+}
+
+.mintButton {
+    width: 300px;
+}
+
+.imageInput {
+    margin-bottom: 10px;
+}
+
+.nftImage {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.imagePlaceholder {
+    width: 100%;
+    height: 250px;
+    border-radius: 10px;
+    border: 1px solid grey;
+}
+
+.formControl {
+    margin: 10px 0px;
+}
+
+.nftCreationLabel {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+    color: $white;
+    font-size: 24px;
+    font-weight: 600;
+}

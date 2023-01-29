@@ -7,6 +7,7 @@ import marchesi_antinori_logo from './marchesi-antinori-logo.jpeg';
 import petra_logo from './petra-logo.png';
 import tenute_lunelli from './tenute_lunelli.jpeg';
 import metamask_logo from './metamask-icon.webp';
+import tenute_lunelli_example from './Tenute-Lunelli-Pietragrande.png';
 
 export {
     collemassari_logo,
@@ -17,5 +18,6 @@ export {
     marchesi_antinori_logo,
     petra_logo,
     tenute_lunelli,
-    metamask_logo
+    metamask_logo,
+    tenute_lunelli_example
 };

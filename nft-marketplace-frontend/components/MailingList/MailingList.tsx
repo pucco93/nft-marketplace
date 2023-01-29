@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useEffect, useMemo, useState } from "react";
 import styles from "./MailingList.module.scss";
-import {mailing_list} from '../../Constants/Constants';
+import {mailing_list} from '../../constants/Constants';
 
 interface IMailingListProps {}
 

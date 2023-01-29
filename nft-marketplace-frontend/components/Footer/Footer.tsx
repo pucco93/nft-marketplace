@@ -123,7 +123,7 @@ const Footer = (props: IFooterProps) => {
                 </p>
                 <br />
                 <p>
-                  Una cosa peró é sicura, ora sai tutto dei prossimi 27 anni,
+                  Una cosa peró é sicura, ora sai tutto dei prossimi 28 anni,
                   fanne buon uso!
                 </p>
                 {isWorking && (

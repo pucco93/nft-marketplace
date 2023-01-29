@@ -6,7 +6,7 @@ import Disclaimer from "../components/Disclaimer/Disclaimer";
 import { useDisclosure } from "@chakra-ui/react";
 import { useEffect } from "react";
 import Footer from "../components/Footer/Footer";
-import {disclaimer_shown} from '../Constants/Constants';
+import {disclaimer_shown} from '../constants/Constants';
 
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();

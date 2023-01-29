@@ -1,13 +1,19 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { alertsSlice } from './slices/AlertsSlice';
 import { connectAccountSlice } from './slices/ConnectAccountSlice';
+import { winemakerSlice } from './slices/WinemakerSlice';
 import { loadingSlice } from './slices/LoadingSlice';
+import { transactionsSlice } from './slices/TransactionsSlice';
+import { contractSlice } from './slices/ContractSlice';
 
 export const store = configureStore({
   reducer: {
     connectAccount: connectAccountSlice.reducer,
     alert: alertsSlice.reducer,
-    loading: loadingSlice.reducer
+    loading: loadingSlice.reducer,
+    winemaker: winemakerSlice.reducer,
+    transactions: transactionsSlice.reducer,
+    contract: contractSlice.reducer
   },
 });
 

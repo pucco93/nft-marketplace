@@ -5,16 +5,18 @@ import MarketplaceIcon from "./MarketplaceIcon";
 import WalletIcon from "./WalletIcon";
 import GrapeIcon from "./GrapeIcon";
 import QuestionMarkIcon from "./QuestionMarkIcon";
+import WinemakerIcon from "./WinemakerIcon";
 import { RootState } from "../../store/appStore";
-import { connectWallet } from "../../contracts_connections/Contracts_Connections";
+import { connectWallet, loadWeb3 } from "../../contracts_connections/Contracts_Connections";
 import logo from "../../assets/wineLogo.png";
 import Image from "next/image";
 import { Link, Text, useDisclosure, useOutsideClick } from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
-import { metamask_account } from "../../Constants/Constants";
+import { metamask_account } from "../../constants/Constants";
 import { connect, disconnect } from "../../store/slices/ConnectAccountSlice";
 import { metamask_logo } from "../../assets/index";
-import { join } from "path";
+import { checkWinemaker } from "../../utilities/Utilities";
+import { setWinemaker, unsetWinemaker } from "../../store/slices/WinemakerSlice";
 
 export interface IHeaderProps {}
 
@@ -23,6 +25,9 @@ const Header = (props: IHeaderProps) => {
   const dispatch = useDispatch();
   const connectedAccount = useSelector(
     (state: RootState) => state.connectAccount.connectedAccount
+  );  
+  const isWinemaker = useSelector(
+    (state: RootState) => state.winemaker.isWinemaker
   );
 
   const disconnectAccount = () => {
@@ -35,7 +40,16 @@ const Header = (props: IHeaderProps) => {
     if (!!accountFromSessionStorage) {
       dispatch(connect(accountFromSessionStorage));
     }
+    loadWeb3();
   }, []);
+
+  useEffect(() => {
+    if(checkWinemaker(connectedAccount)) {
+        dispatch(setWinemaker());
+    } else {
+        dispatch(unsetWinemaker());
+    }
+  }, [connectedAccount]);
 
   return (
     <div className={styles.container}>
@@ -44,10 +58,7 @@ const Header = (props: IHeaderProps) => {
         <h1 className={styles.title}>Vevino</h1>
       </Link>
       <div className={styles.routesContainer}>
-        <Link href="/Marketplace" className={styles.routeContainer}>
-          <MarketplaceIcon />
-          Marketplace
-        </Link>
+        {isWinemaker ? <WinemakerLink /> : <MarketplaceLink />}
         <Link href="/Wineries" className={styles.routeContainer}>
           <GrapeIcon />
           Cantine
@@ -72,6 +83,24 @@ const Header = (props: IHeaderProps) => {
   );
 };
 
+const WinemakerLink = () => {
+    return(
+        <Link href="/Winemaker" className={styles.routeContainer}>
+          <WinemakerIcon />
+          La mia cantina
+        </Link>
+    );
+};
+
+const MarketplaceLink = () => {
+    return(
+        <Link href="/Marketplace" className={styles.routeContainer}>
+          <MarketplaceIcon />
+          Marketplace
+        </Link>
+    );
+};
+
 interface IAccountMenuProps {
   account: string;
   disconnectAccount: () => void;
@@ -89,7 +118,7 @@ const AccountMenu = (props: IAccountMenuProps) => {
 
   useOutsideClick({
     ref: accountRef,
-    handler: () => onClose()
+    handler: onClose
   });
 
   return (
@@ -119,3 +148,22 @@ const AccountMenu = (props: IAccountMenuProps) => {
 };
 
 export default Header;
+
+
+{/* <Menu>
+<MenuButton
+  as={Button}
+  leftIcon={
+    <Image
+      src={metamask_logo}
+      alt="metamask img"
+      className={styles.accountImg}
+    />
+  }
+>
+  {`${props.account?.slice(0, 8)}...`}
+</MenuButton>
+<MenuList>
+  <MenuItem onClick={props.disconnectAccount}>Disconnetti account</MenuItem>
+</MenuList>
+</Menu> */}

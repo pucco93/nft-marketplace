@@ -1,0 +1,17 @@
+[
+    {
+        "id": "732bc89f-983e-4ec5-adba-a69197ebd048",
+        "name": "Marchesi Antinori",
+        "etherId": "0x55DEE981492E91B7E9DBD2C0EDD1FF70541F5089"
+    },    
+    {
+        "id": "1dc10eac-4def-45eb-ac34-ccf7393f1039",
+        "name": "Tenute Lunelli",
+        "etherId": "0x5C4D3C76D506BA075097227C55F1C13EBDEAD4CC"
+    },    
+    {
+        "id": "db934a08-07e2-4490-99db-dde6a56a50eb",
+        "name": "Filodivino",
+        "etherId": "0x53FFE99DAE15980E6F282A5643053D7A20BF3476"
+    }
+]

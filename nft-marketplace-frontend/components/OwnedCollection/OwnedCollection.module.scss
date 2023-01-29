@@ -1,0 +1,20 @@
+@import '../../styles/theme.scss';
+
+.ownedCollectionContainer {
+    margin-top: 50px;
+}
+
+.collectionLabel {
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.myCollectionGridContainer {
+    display: grid;
+    margin: 30px;
+    grid-template-columns: repeat(5, 1fr);
+    // grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 20px;
+}
