@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import Alert from '../../models/Alert';
 
 export interface AlertsState {
-    alert: Alert;
+    value: Alert;
 }
 
 const initialState: AlertsState = {
-    alert: { show: false, msg: '', color: '' },
+    value: { show: false, msg: '', color: '' },
 }
 
 export const alertsSlice = createSlice({
@@ -14,14 +14,14 @@ export const alertsSlice = createSlice({
     initialState,
     reducers: {
         createAlert: (state, { payload }) => {
-            state.alert = {
+            state.value = {
                 show: payload.show,
                 msg: payload.msg,
                 color: payload.color
             };
         },
         deleteAlert: (state) => {
-            state.alert = {
+            state.value = {
                 show: false,
                 msg: '',
                 color: ''

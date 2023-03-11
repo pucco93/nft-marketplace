@@ -1,7 +1,7 @@
 import styles from "./HorizontalBanner.module.scss";
 import Winery from "../../models/Winery";
 import HorizontalBannerItem from "./HorizontalBannerItem";
-import * as logos from '../../assets/index';
+import * as logos from '../../public/assets/index';
 
 const HorizontalBanner = () => {
   const wineries = [

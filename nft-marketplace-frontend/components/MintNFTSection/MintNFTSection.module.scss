@@ -4,7 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 20px 0px;
+    padding: 80px 0px 20px;
     background-color: $themePrimary--light--2;
 }
 
@@ -21,6 +21,7 @@
     height: 250px;
     border-radius: 10px;
     overflow: hidden;
+    object-fit: contain;
 }
 
 .imagePlaceholder {
@@ -41,4 +42,8 @@
     color: $white;
     font-size: 24px;
     font-weight: 600;
+}
+
+.loader {
+    margin: 50px 0px 30px;
 }

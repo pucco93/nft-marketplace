@@ -18,7 +18,9 @@ import { Window, WindowHeader, Button, Toolbar, WindowContent } from "react95";
 import original from "react95/dist/themes/original";
 import { ThemeProvider } from "styled-components";
 
-export interface IFooterProps {}
+export interface IFooterProps {
+  isStepper?: boolean;
+}
 
 const Footer = (props: IFooterProps) => {
   const {
@@ -54,7 +56,15 @@ const Footer = (props: IFooterProps) => {
 
   return (
     <>
-      <section className={styles.footerSection}>
+      <section
+        className={styles.footerSection}
+        style={
+          {
+            position: `${props.isStepper ? 'fixed' : ''}`,
+            width: `${props.isStepper ? 'calc(100vw - 190px)' : ''}`,
+            margin: `${props.isStepper ? '30px 95px' : '30px 50px'}`
+          }
+        }>
         <Text className={styles.projectText}>
           Distributed Systems university project. 2022
         </Text>

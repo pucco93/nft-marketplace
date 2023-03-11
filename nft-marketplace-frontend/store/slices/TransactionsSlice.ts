@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import Transaction from '../../models/Transaction';
 
 export interface TransactionsState {
-    transactions: Transaction[];
+    value: Transaction[];
 }
 
 const initialState: TransactionsState = {
-    transactions: [],
+    value: [],
 }
 
 export const transactionsSlice = createSlice({
@@ -14,13 +14,13 @@ export const transactionsSlice = createSlice({
     initialState,
     reducers: {
         setTransactions: (state, {payload}) => {
-            state.transactions = [...payload];
+            state.value = [...payload];
         },
         updateTransactions: (state, { payload }) => {
-            state.transactions = [...state.transactions, ...payload];
+            state.value = [...state.value, ...payload];
         },
         cleanTransaction: (state) => {
-            state.transactions = [];
+            state.value = [];
         },
     },
 });

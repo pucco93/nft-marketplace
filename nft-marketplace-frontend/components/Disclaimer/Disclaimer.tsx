@@ -33,7 +33,7 @@ const Disclaimer = (props: IDisclaimerProps) => {
         </ModalBody>
 
         <ModalFooter>
-          <Button colorScheme="red" mr={3} onClick={() => props.closeDisclaimer}>
+          <Button colorScheme="red" mr={3} onClick={props.closeDisclaimer}>
             Chiudi
           </Button>
         </ModalFooter>

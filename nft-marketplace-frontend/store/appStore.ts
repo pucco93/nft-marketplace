@@ -5,6 +5,8 @@ import { winemakerSlice } from './slices/WinemakerSlice';
 import { loadingSlice } from './slices/LoadingSlice';
 import { transactionsSlice } from './slices/TransactionsSlice';
 import { contractSlice } from './slices/ContractSlice';
+import { nftsSlice } from './slices/NFTsSlice';
+import { filterSlice } from './slices/FiltersSlice';
 
 export const store = configureStore({
   reducer: {
@@ -13,8 +15,11 @@ export const store = configureStore({
     loading: loadingSlice.reducer,
     winemaker: winemakerSlice.reducer,
     transactions: transactionsSlice.reducer,
-    contract: contractSlice.reducer
+    contract: contractSlice.reducer,
+    nfts: nftsSlice.reducer,
+    filters: filterSlice.reducer
   },
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
 
 // Infer the `RootState` and `AppDispatch` types from the store itself

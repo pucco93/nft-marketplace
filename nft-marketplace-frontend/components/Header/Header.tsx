@@ -5,30 +5,39 @@ import MarketplaceIcon from "./MarketplaceIcon";
 import WalletIcon from "./WalletIcon";
 import GrapeIcon from "./GrapeIcon";
 import QuestionMarkIcon from "./QuestionMarkIcon";
-import WinemakerIcon from "./WinemakerIcon";
 import { RootState } from "../../store/appStore";
-import { connectWallet, loadWeb3 } from "../../contracts_connections/Contracts_Connections";
-import logo from "../../assets/wineLogo.png";
+import {
+  connectWallet
+} from "../../contracts_connections/Contracts_Connections";
+import logo from "../../public/assets/wineLogo.png";
 import Image from "next/image";
-import { Link, Text, useDisclosure, useOutsideClick } from "@chakra-ui/react";
+import {
+  Button,
+  Link,
+  Text,
+  useDisclosure,
+  useOutsideClick,
+} from "@chakra-ui/react";
 import { useEffect, useRef } from "react";
 import { metamask_account } from "../../constants/Constants";
 import { connect, disconnect } from "../../store/slices/ConnectAccountSlice";
-import { metamask_logo } from "../../assets/index";
+import { metamask_logo } from "../../public/assets/index";
 import { checkWinemaker } from "../../utilities/Utilities";
-import { setWinemaker, unsetWinemaker } from "../../store/slices/WinemakerSlice";
+import {
+  setWinemaker,
+  unsetWinemaker,
+} from "../../store/slices/WinemakerSlice";
+import MyColletionIcon from "./MyCollectionIcon";
+import { getConnectedAccount } from "../../store/selectors";
 
-export interface IHeaderProps {}
+export interface IHeaderProps {
+  isStepper?: boolean;
+}
 
 const Header = (props: IHeaderProps) => {
   let accountFromSessionStorage = "";
   const dispatch = useDispatch();
-  const connectedAccount = useSelector(
-    (state: RootState) => state.connectAccount.connectedAccount
-  );  
-  const isWinemaker = useSelector(
-    (state: RootState) => state.winemaker.isWinemaker
-  );
+  const connectedAccount = useSelector((state: RootState) => getConnectedAccount(state));
 
   const disconnectAccount = () => {
     sessionStorage.setItem(metamask_account, "");
@@ -40,65 +49,98 @@ const Header = (props: IHeaderProps) => {
     if (!!accountFromSessionStorage) {
       dispatch(connect(accountFromSessionStorage));
     }
-    loadWeb3();
   }, []);
 
   useEffect(() => {
-    if(checkWinemaker(connectedAccount)) {
-        dispatch(setWinemaker());
+    if (checkWinemaker(connectedAccount)) {
+      dispatch(setWinemaker());
     } else {
-        dispatch(unsetWinemaker());
+      dispatch(unsetWinemaker());
     }
   }, [connectedAccount]);
 
   return (
-    <div className={styles.container}>
+    <>
+      <div
+        className={styles.container}
+        style={{position: `${props.isStepper ? 'fixed' : ''}` as 'fixed'}}
+      >
+        <HomeLink />
+        <div className={styles.routesContainer}>
+          <MyWineCellarLink />
+          <MarketplaceLink />
+          <WineriesLink />
+          <HowItWorksLink />
+          {!connectedAccount ? (
+            <div onClick={connectWallet} className={styles.signInContainer}>
+              <WalletIcon />
+              Connetti wallet
+            </div>
+          ) : (
+            <AccountMenu
+              account={connectedAccount}
+              disconnectAccount={disconnectAccount}
+            />
+          )}
+        </div>
+      </div>
+    </>
+  );
+};
+
+const HomeLink = () => {
+  return (
+    <Button variant="ghost" className={styles.buttonLogoContainer}>
       <Link href="/" className={styles.logoContainer}>
         <Image className={styles.logo} src={logo} alt="site logo" />
         <h1 className={styles.title}>Vevino</h1>
       </Link>
-      <div className={styles.routesContainer}>
-        {isWinemaker ? <WinemakerLink /> : <MarketplaceLink />}
-        <Link href="/Wineries" className={styles.routeContainer}>
-          <GrapeIcon />
-          Cantine
-        </Link>
-        <Link href="/How_it_works" className={styles.routeContainer}>
-          <QuestionMarkIcon />
-          Info
-        </Link>
-        {!connectedAccount ? (
-          <div onClick={connectWallet} className={styles.signInContainer}>
-            <WalletIcon />
-            Connetti wallet
-          </div>
-        ) : (
-          <AccountMenu
-            account={connectedAccount}
-            disconnectAccount={disconnectAccount}
-          />
-        )}
-      </div>
-    </div>
+    </Button>
   );
 };
 
-const WinemakerLink = () => {
-    return(
-        <Link href="/Winemaker" className={styles.routeContainer}>
-          <WinemakerIcon />
-          La mia cantina
-        </Link>
-    );
+const MarketplaceLink = () => {
+  return (
+    <Button variant="ghost">
+      <Link href="/Marketplace" className={styles.routeContainer}>
+        <MarketplaceIcon />
+        Marketplace
+      </Link>
+    </Button>
+  );
 };
 
-const MarketplaceLink = () => {
-    return(
-        <Link href="/Marketplace" className={styles.routeContainer}>
-          <MarketplaceIcon />
-          Marketplace
-        </Link>
-    );
+const MyWineCellarLink = () => {
+  return (
+    <Button variant="ghost">
+      <Link href="/MyWineCellar" className={styles.routeContainer}>
+        <MyColletionIcon />
+        La mia cantina
+      </Link>
+    </Button>
+  );
+};
+
+const WineriesLink = () => {
+  return (
+    <Button variant="ghost">
+      <Link href="/Wineries" className={styles.routeContainer}>
+        <GrapeIcon />
+        Cantine
+      </Link>
+    </Button>
+  );
+};
+
+const HowItWorksLink = () => {
+  return (
+    <Button variant="ghost">
+      <Link href="/How_it_works" className={styles.routeContainer}>
+        <QuestionMarkIcon />
+        Info
+      </Link>
+    </Button>
+  );
 };
 
 interface IAccountMenuProps {
@@ -118,7 +160,7 @@ const AccountMenu = (props: IAccountMenuProps) => {
 
   useOutsideClick({
     ref: accountRef,
-    handler: onClose
+    handler: onClose,
   });
 
   return (
@@ -148,22 +190,3 @@ const AccountMenu = (props: IAccountMenuProps) => {
 };
 
 export default Header;
-
-
-{/* <Menu>
-<MenuButton
-  as={Button}
-  leftIcon={
-    <Image
-      src={metamask_logo}
-      alt="metamask img"
-      className={styles.accountImg}
-    />
-  }
->
-  {`${props.account?.slice(0, 8)}...`}
-</MenuButton>
-<MenuList>
-  <MenuItem onClick={props.disconnectAccount}>Disconnetti account</MenuItem>
-</MenuList>
-</Menu> */}

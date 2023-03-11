@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import Loading from '../../models/Loading';
 
 export interface LoadingState {
-    loading: Loading;
+    value: Loading;
 }
 
 const initialState: LoadingState = {
-    loading: { show: false, msg: '' },
+    value: { show: false, msg: '' },
 }
 
 export const loadingSlice = createSlice({
@@ -14,15 +14,15 @@ export const loadingSlice = createSlice({
     initialState,
     reducers: {
         setLoading: (state, { payload }) => {
-            state.loading = {
+            state.value = {
                 show: payload.show,
-                msg: payload.msg,
+                msg: payload.msg
             };
         },
         cancelLoading: (state) => {
-            state.loading = {
+            state.value = {
                 show: false,
-                msg: '',
+                msg: ''
             };
         },
     },

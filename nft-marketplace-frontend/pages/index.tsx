@@ -7,9 +7,11 @@ import { useDisclosure } from "@chakra-ui/react";
 import { useEffect } from "react";
 import Footer from "../components/Footer/Footer";
 import {disclaimer_shown} from '../constants/Constants';
+import { loadWeb3 } from "../contracts_connections/Contracts_Connections";
 
 export default function Home() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  loadWeb3();
 
   useEffect(() => {
     const isShown = sessionStorage.getItem(disclaimer_shown);

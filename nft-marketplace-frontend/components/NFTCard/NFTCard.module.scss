@@ -2,12 +2,15 @@
 
 .cardContainer {
     width: 100%;
-    height: 450px;
+    height: 500px;
     color: $black-text;
     background-color: #f7f7f7;
     box-shadow: 0px 10px 15px -3px rgba(157, 58, 133, 0.3);
     position: relative;
     border-radius: 10px;
+    overflow: hidden;
+	-webkit-animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+	        animation: slide-top 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;;
 
     &:hover {
         .buyButton {
@@ -17,7 +20,7 @@
         .nftImage {
             transform: scale(1.1);
         }
-        .changePriceButton {
+        .editButton {
             padding: 15px 0px 10px 0px;
             background-color: $themePrimary;
         }
@@ -26,6 +29,7 @@
 
 .imgContainer {
     height: 250px;
+    position: relative;
     overflow: hidden;
 }
 
@@ -50,12 +54,18 @@
     line-break: anywhere;
     display: -webkit-box;
     -webkit-box-orient: vertical;
-    -webkit-line-clamp: 1;
+    -webkit-line-clamp: 2;
+    word-break: break-all;
+    white-space: pre-wrap;
+    text-overflow: ellipsis;
 }
 
 .currentOwner {
     font-weight: 600;
     margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .descriptionContainer {
@@ -86,7 +96,7 @@
     transition: all 300ms;
 }
 
-.changePriceButton {
+.editButton {
     cursor: pointer;
     position: absolute;
     bottom: 0;
@@ -110,8 +120,43 @@
     margin-bottom: 10px;
     display: flex;
     justify-content: center;
+    position: relative;
 }
 
 .changePriceInput {
     margin-top: 10px;
 }
+
+.privatizeInput {
+    margin-top: 10px;
+}
+
+.loginBefore {
+    margin: 0px 5px;
+}
+
+/**
+ * ----------------------------------------
+ * animation slide-top
+ * ----------------------------------------
+ */
+ @-webkit-keyframes slide-top {
+    0% {
+      -webkit-transform: translateY(100px);
+              transform: translateY(100px);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+    }
+  }
+  @keyframes slide-top {
+    0% {
+      -webkit-transform: translateY(100px);
+              transform: translateY(100px);
+    }
+    100% {
+      -webkit-transform: translateY(0);
+              transform: translateY(0);
+    }
+  }

@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import { Contract } from 'web3-eth-contract';
 
 export interface ContractState {
-    contract: Contract | null;
+    value: Contract | null;
 }
 
 const initialState: ContractState = {
-    contract: null,
+    value: null,
 }
 
 export const contractSlice = createSlice({
@@ -14,10 +14,10 @@ export const contractSlice = createSlice({
     initialState,
     reducers: {
         setContract: (state, { payload }) => {
-            state.contract = payload;
+            state.value = payload;
         },
         deleteContract: (state) => {
-            state.contract = null;
+            state.value = null;
         },
     },
 });

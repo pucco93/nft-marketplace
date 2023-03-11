@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 
 export interface ThemeState {
-    theme: ColorMode;
+  theme: ColorMode;
 }
 
 const initialState: ThemeState = {

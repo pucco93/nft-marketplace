@@ -2,7 +2,7 @@ import { ChevronDownIcon } from "@chakra-ui/icons";
 import Image from "next/image";
 import { useRef } from "react";
 import styles from "./HeroSection.module.scss";
-import bgImg from "../../assets/vineyard.jpeg";
+import bgImg from "../../public/assets/vineyard.jpeg";
 
 export interface IHeroSectionProps {}
 
@@ -10,7 +10,7 @@ const HeroSection = (props: IHeroSectionProps) => {
   const arrowRef = useRef<SVGSVGElement>(null);
 
   const scroll = () => {
-    const { top, bottom, height } = arrowRef?.current?.getBoundingClientRect();
+    const { top, bottom, height } = arrowRef?.current?.getBoundingClientRect() as DOMRect;
     window.scrollBy({top: top + bottom + height, behavior: 'smooth'});
   };
 

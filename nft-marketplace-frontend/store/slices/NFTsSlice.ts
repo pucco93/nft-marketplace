@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit';
 import NFT from '../../models/NFT';
 
 export interface NFTsState {
-    nfts: NFT[];
+    value: NFT[];
 }
 
 const initialState: NFTsState = {
-    nfts: [],
+    value: [],
 }
 
 export const nftsSlice = createSlice({
@@ -14,18 +14,18 @@ export const nftsSlice = createSlice({
     initialState,
     reducers: {
         setNFTs: (state, {payload}) => {
-            state.nfts = [...payload];
+            state.value = [...payload];
         },
         updateNFTs: (state, { payload }) => {
-            state.nfts = [...state.nfts, ...payload];
+            state.value = [...state.value, ...payload];
         },
         deleteNFTs: (state) => {
-            state.nfts = [];
+            state.value = [];
         },
     },
 });
 
 // Action creators are generated for each case reducer function
-export const { updateNFTs, deleteNFTs } = nftsSlice.actions;
+export const { updateNFTs, deleteNFTs, setNFTs } = nftsSlice.actions;
 
 export default nftsSlice.reducer;

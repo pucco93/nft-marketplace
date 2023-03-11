@@ -1,5 +1,7 @@
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
+import Onboarding from '../components/Onboarding/Onboarding';
+import { loadWeb3 } from '../contracts_connections/Contracts_Connections';
 
 export interface IHowItWorksProps {
 
@@ -10,15 +12,15 @@ export interface IHowItWorksProps {
 // REACT STEPPER implementarlo da soli
 
 const HowItWorks = () => {
+    loadWeb3();
 
     return(
         <>
-            <Header />
+            <Header isStepper />
 
-            <p style={{padding: '100px 0px 0px', display: 'flex', justifyContent: 'center'}}>This section is work in progess!</p>
-            <p style={{padding: '0px 0px 100px 0px', display: 'flex', justifyContent: 'center'}}>Check it again in some days if the feature has been released!</p>
+            <Onboarding />
                 
-            <Footer />
+            <Footer isStepper />
         </>
     );
 };

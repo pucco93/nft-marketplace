@@ -11,8 +11,11 @@ export const mockNFT: NFT = {
     id: 0,
     owner: '', 
     cost: '',
-    title: '',
+    name: '',
+    author: '',
+    isBuyable: true, // For future features
     description: '',
+    image: '',
     metadataURI: '',
     timestamp: ''
 };

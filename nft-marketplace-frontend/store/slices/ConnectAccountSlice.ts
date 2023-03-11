@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export interface ConnectAccountState {
-  connectedAccount: string
+  value: string
 }
 
 const initialState: ConnectAccountState = {
-    connectedAccount: '',
+  value: '',
 }
 
 export const connectAccountSlice = createSlice({
@@ -13,10 +13,10 @@ export const connectAccountSlice = createSlice({
   initialState,
   reducers: {
     connect: (state, {payload}) => {
-      state.connectedAccount = payload;
+      state.value = payload;
     },
     disconnect: (state) => {
-      state.connectedAccount = '';
+      state.value = '';
     },
   },
 });

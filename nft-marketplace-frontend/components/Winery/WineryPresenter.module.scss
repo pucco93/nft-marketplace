@@ -1,0 +1,60 @@
+@import '../../styles/theme.scss';
+
+section.wineryPresenter {
+    background-color: white;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+.gridElement {
+    position: relative;
+    height: 50vh;
+    overflow: hidden;
+}
+
+.bgImage {
+    width: 100%;
+    height: 100%;
+    transition: all 300ms;
+}
+
+.bgImageOverlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 2;
+    background: linear-gradient(rgba(83, 83, 83, 0.5), rgba(83, 83, 83, 0.5));
+}
+
+.infoContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    transition: all 600ms ease-in-out;
+    cursor: pointer;
+    padding-top: 10%;
+}
+
+.logoImage {
+    width: 30%;
+}
+
+.description {
+    margin-top: 20px;
+    padding: 0px 10%;
+    font-size: 12px;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    text-align: center;
+}

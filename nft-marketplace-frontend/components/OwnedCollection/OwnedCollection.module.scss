@@ -1,7 +1,7 @@
 @import '../../styles/theme.scss';
 
 .ownedCollectionContainer {
-    margin-top: 50px;
+    padding-top: 75px;
 }
 
 .collectionLabel {
@@ -17,4 +17,11 @@
     // grid-template-rows: repeat(2, 1fr);
     grid-column-gap: 10px;
     grid-row-gap: 20px;
+}
+
+.noCollectionContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    height: calc(100vh - 30px - 36px - 75px - 160px);
 }

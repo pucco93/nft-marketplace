@@ -21,7 +21,7 @@
 }
 
 .priceFilter {
-
+    margin: 10px 0px;
 }
 
 .priceLabel {
@@ -30,8 +30,88 @@
     font-size: 16px;
 }
 
+.yearFilter {
+    margin: 10px 0px;
+}
+
+.yearLabel {
+    margin: 20px 0px 5px 0px;
+    color: $black-text;
+    font-size: 16px;
+}
+
+.yearInput {
+    border: 1px solid $themePrimary!important;
+    color: $themePrimary!important;
+}
+
+.sortingControl {
+    margin: 20px 0px 5px 0px;
+    color: $black-text;
+    font-size: 16px;
+}
+
+.sortContainer {
+    margin-bottom: 15px;
+}
+
+.sortInput {
+    border: 1px solid $themePrimary!important;
+    color: $themePrimary!important;
+}
+
+.wineryFilter {
+    margin: 10px 0px;
+}
+
+.wineryLabel {
+    margin: 20px 0px 5px 0px;
+    color: $black-text;
+    font-size: 16px;
+}
+
+.wineryInput {
+    border: 1px solid $themePrimary!important;
+    color: $themePrimary!important;
+}
+
+.countFilter {
+    margin: 10px 0px;
+}
+
+.countLabel {
+    margin: 20px 0px 5px 0px;
+    color: $black-text;
+    font-size: 16px;
+}
+
+.countOptions {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.countOption {
+    margin: 0px 10px 0px 0px;
+    cursor: pointer;
+    transition: all 300ms;
+}
+
+.pricesContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.lowerPrice {
+    color: $themePrimary;
+}
+
+.upperPrice {
+    color: $themePrimary;
+}
+
 .marketplaceCollection {
-    margin-top: 100px;
+    margin: 100px 0px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -42,6 +122,7 @@
     color: $black-text;
     font-size: 24px;
     font-weight: 600;
+    width: 100%;
 }
 
 .nftCardsContainer {
@@ -60,6 +141,41 @@
     border-radius: 10px;
     background-color: $themePrimary--light--2;
     transition: all 300ms;
+    &:hover {
+        background-color: $themePrimary;
+    }
+}
+
+.noNFT {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    font-size: 20px;
+    font-weight: 600;
+    color: $black-text;
+}
+
+.skeletonCard {
+    border-radius: 10px !important;
+    width: 300px;
+}
+
+.resetControl {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.resetButton {
+    display: flex;
+    padding: 7px;
+    border-radius: 10px;
+    justify-content: center;
+    width: 100%;
+    background-color: #9d3a85;
+    color: #ffffff;
+    transition: all 300ms;
+    cursor: pointer;
+
     &:hover {
         background-color: $themePrimary;
     }

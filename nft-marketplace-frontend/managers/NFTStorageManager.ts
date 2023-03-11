@@ -1,37 +1,54 @@
 import { NFTStorage, File, Blob } from 'nft.storage';
 import { NFT_storage_config } from '../configs/nftstorage.config';
+import { mintNFT } from '../contracts_connections/Contracts_Connections';
+import NFTToMint from '../models/NFTToMint';
+import { store } from '../store/appStore';
+import { cancelLoading } from '../store/slices/LoadingSlice';
 
-export const metadata = {
-    "title": "Asset Metadata",
-    "type": "object",
-    "properties": {
-        "name": {
-            "type": "string",
-            "description": "Identifies the asset to which this NFT represents"
-        },
-        "description": {
-            "type": "string",
-            "description": "Describes the asset to which this NFT represents"
-        },
-        "image": {
-            "type": "string",
-            "description": "A URI pointing to a resource with mime type image/* representing the asset to which this NFT represents. Consider making any images at a width between 320 and 1080 pixels and aspect ratio between 1.91:1 and 4:5 inclusive."
+export class NFTStorageManager {
+
+    public mint = async (nftToMint: NFTToMint) => {
+        try {
+            const body = {
+                name: nftToMint.name,
+                description: nftToMint.description,
+                image: undefined,
+                properties: {
+                    price: nftToMint.price,
+                    author: nftToMint.author
+                }
+            };
+            let formData = new FormData();
+            formData.append("meta", JSON.stringify(body));
+            formData.append("image", new File([nftToMint.image], 'nft.png', { type: 'image/png' }));
+
+            const metadata = await fetch("https://api.nft.storage/store", {
+                method: "POST",
+                body: formData,
+                headers: {
+                    'Authorization': 'Bearer ' + NFT_storage_config.apiKey,
+                }
+            });
+            const result = await metadata.json();
+            return mintNFT(result?.value);
+        } catch (error) {
+            store.dispatch(cancelLoading());
+            console.log(error);
+        }
+        return undefined;
+    }
+
+    public getImage = async (url: string) => {
+        try {
+            const response = await fetch(url);
+            const result = await response.json();
+            return result;
+        } catch (error: any) {
+            console.log(error);
+            return '';
         }
     }
 }
 
-export class NFTStorageManager {
-    constructor() {
-        const NFT_STORAGE_TOKEN = NFT_storage_config.apiKey;
-        const client = new NFTStorage({ token: NFT_STORAGE_TOKEN });
-    }
-
-    public mint = async () => { 
-        const imageFile = new File([ someBinaryImageData ], 'nft.png', { type: 'image/png' })
-        const metadata = await client.store({
-        name: 'My sweet NFT',
-        description: 'Just try to funge it. You can\'t do it.',
-        image: imageFile
-        });
-    }
-}
+const nftAPIManager = new NFTStorageManager();
+export default nftAPIManager;
