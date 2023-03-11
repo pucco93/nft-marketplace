@@ -51,8 +51,12 @@ const MintNFTSection = (props: IMintNFTSectionProps) => {
   const [isDisabled, updateDisabled] = useState<boolean>(true);
   const isLoading = useSelector((state: RootState) => state.loading.value.show);
 
-  const currentYear = (new Date()).getFullYear();
-  const range = (start: number, stop: number, step: number) => Array.from({ length: (stop - start) / step + 1}, (_, i) => start + (i * step));
+  const currentYear = new Date().getFullYear();
+  const range = (start: number, stop: number, step: number) =>
+    Array.from(
+      { length: (stop - start) / step + 1 },
+      (_, i) => start + i * step
+    );
   const yearOptions = range(currentYear + 25, currentYear - 25, -1);
 
   useEffect(() => {
@@ -124,7 +128,7 @@ const MintNFTSection = (props: IMintNFTSectionProps) => {
     );
     const isCreated = await nftAPIManager.mint(form);
     if (isCreated) {
-      onClose();
+      _onClose();
     }
   };
 
@@ -141,13 +145,13 @@ const MintNFTSection = (props: IMintNFTSectionProps) => {
       for (let i = 1; i <= form.amountToMint; i++) {
         let newBottle = {
           ...form,
-          name: `${form.name} ${i}/50`,
+          name: `${form.name} ${i}/${form.amountToMint}`,
         };
         requests.push(nftAPIManager.mint(newBottle));
       }
       const isCreated = await Promise.all(requests);
       if (isCreated) {
-        onClose();
+        _onClose();
       }
     }
   };
@@ -239,17 +243,19 @@ const MintNFTSection = (props: IMintNFTSectionProps) => {
                 ))}
               </Select>
             </FormControl>
-            <FormControl className={styles.formControl}>
-              <FormLabel>Quantitá (tra 1 e 50)</FormLabel>
-              <InputGroup className={styles.amountInput}>
-                <Input
-                  type="number"
-                  min={0}
-                  max={50}
-                  onChange={_updateAmount}
-                />
-              </InputGroup>
-            </FormControl>
+            {isMultiple && (
+              <FormControl className={styles.formControl}>
+                <FormLabel>Quantitá (tra 1 e 50)</FormLabel>
+                <InputGroup className={styles.amountInput}>
+                  <Input
+                    type="number"
+                    min={0}
+                    max={50}
+                    onChange={_updateAmount}
+                  />
+                </InputGroup>
+              </FormControl>
+            )}
             {isLoading && (
               <div className={styles.loader}>
                 <Progress size="sm" isIndeterminate />

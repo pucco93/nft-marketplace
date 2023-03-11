@@ -15,7 +15,8 @@ export class NFTStorageManager {
                 image: undefined,
                 properties: {
                     price: nftToMint.price,
-                    author: nftToMint.author
+                    author: nftToMint.author,
+                    year: String(nftToMint.year)
                 }
             };
             let formData = new FormData();

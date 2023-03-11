@@ -82,9 +82,10 @@ const loadWeb3 = async () => {
 
 
 const mintNFT = async (nft: any) => {
-  const { name, description, properties, year } = nft.data;
+  const { name, description, properties } = nft.data;
   const metadataURI = nft.url;
   let cost = properties.price;
+  let year = properties.year;
   try {
     cost = window.web3.utils.toWei(cost.toString(), 'ether');
     const contract = store.getState().contract.value;
@@ -92,7 +93,7 @@ const mintNFT = async (nft: any) => {
     const mintPrice = window.web3.utils.toWei('0.01', 'ether');
 
     await contract?.methods
-      .payToMint(name, description, metadataURI, cost, String(year))
+      .payToMint(name, description, metadataURI, cost, year)
       .send({ from: account, value: mintPrice });
 
     store.dispatch(cancelLoading());

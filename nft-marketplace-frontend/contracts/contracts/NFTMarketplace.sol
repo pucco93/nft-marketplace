@@ -57,8 +57,8 @@ contract WineNFT is ERC721Enumerable, Ownable {
         string memory title,
         string memory description,
         string memory metadataURI,
-        string memory year,
-        uint256 salesPrice
+        uint256 salesPrice,
+        string memory year
     ) external payable {
         require(msg.value >= cost, "Ether too low for minting!");
         require(existingURIs[metadataURI] == 0, "This NFT is already minted!");
