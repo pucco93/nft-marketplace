@@ -33,10 +33,10 @@ contract WineNFT is ERC721Enumerable, Ownable {
         address owner;
         uint256 cost;
         string title;
-        string year;
         string description;
         string metadataURI;
         uint256 timestamp;
+        string year;
         bool isBuyable;
     }
 
@@ -78,8 +78,8 @@ contract WineNFT is ERC721Enumerable, Ownable {
                 title,
                 description,
                 metadataURI,
-                year,
                 block.timestamp,
+                year,
                 true
             )
         );
@@ -114,8 +114,8 @@ contract WineNFT is ERC721Enumerable, Ownable {
                 minted[id - 1].title,
                 minted[id - 1].description,
                 minted[id - 1].metadataURI,
-                minted[id - 1].year,
                 block.timestamp,
+                minted[id - 1].year,
                 false
             )
         );

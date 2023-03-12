@@ -191,8 +191,7 @@ const MintNFTSection = (props: IMintNFTSectionProps) => {
           <ModalBody>
             <FormControl className={styles.formControl}>
               <FormLabel>
-                Nome (verrá automaticamente aggiunto un numero per identificare
-                ogni bottiglia, es. 1/40)
+                Nome {isMultiple && "(verrá automaticamente aggiunto un numero per identificare ogni bottiglia, es. 1/40)"}
               </FormLabel>
               <Input type="text" onChange={_updateTitle} />
             </FormControl>
@@ -222,7 +221,7 @@ const MintNFTSection = (props: IMintNFTSectionProps) => {
             <FormControl className={styles.formControl}>
               <FormLabel>Prezzo</FormLabel>
               <InputGroup className={styles.changePriceInput}>
-                <Input type="number" min={0} onChange={_updatePrice} />
+                <Input type="number" min={0} step={0.001} onChange={_updatePrice} />
                 <InputRightAddon children="ETH" />
               </InputGroup>
             </FormControl>
