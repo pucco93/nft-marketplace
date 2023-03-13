@@ -141,7 +141,7 @@ These configurations must be inserted in the `truffle-config.js` file, which is 
 Right below there's the example I used for this project (no sensitive data):
 
 
-```json
+```js
 development: {
     host: "127.0.0.1",     // Localhost (default: none)
     port: 7545,            // Standard Ethereum port (default: none)
