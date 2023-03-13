@@ -98,7 +98,7 @@ const mintNFT = async (nft: any) => {
 
     store.dispatch(cancelLoading());
 
-    useAlert(`La bottiglia ${name} creato!`, 'green');
+    useAlert(`La bottiglia ${name} é stata creata!`, 'green');
     return true;
   } catch (error: any) {
     useAlert(error.message, 'red');
