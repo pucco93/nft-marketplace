@@ -152,7 +152,7 @@ development: {
 
 Though this was my configuration to test in ganache I could use the default testnet that truffle created for me with the help of Goerli, this is one of the many other tools available to create a local testnet.
 
-Once the configuration is done I went on to build the files with the correct deploy script, this must be coded inside migrations folder, creating a file called 2_deploy_contracts.js to specify some internal information that truffle needs to deploy correctly in the Ganache workspace, example below (as before, no sensitive data):
+Once the configuration is done I went on to build the files with the correct deploy script, this must be coded inside migrations folder, creating two files called `1_initial_migration.js` and `2_deploy_contracts.js` to specify some internal information that truffle needs to deploy correctly in the Ganache workspace, example below (as before, no sensitive data):
 
 
 ```typescript
@@ -168,8 +168,8 @@ module.exports = async (deployer) => {
 };
 ```
 
-
-When the files are ready I just had to launch `truffle migrate` and it will build files into a build folder, now the only thing I should do in order to let the testnet work properly with the new files is to copy those files and put them inside the path `contracts/build/contracts`.
+The script above can be customized to do other jobs during deploy, like deploy some other contracts if there are, or even call another deploy script.
+When the files were ready I just had to launch `truffle migrate` and it would build files into a build folder, now the only thing remaining in order to let the testnet work properly with the new files is to copy those files and put them inside the path `contracts/build/contracts`.
 
 If I need to update smart contracts with some other logic I just need to launch  `truffle migrate` another time and again copy and paste the built files.
 
@@ -210,7 +210,7 @@ When the connection is set the function will retrieve all the NFTs and set them 
 
 ### Pages <a name="pages"></a>
 
-There are 4 main pages in the project (home and then menu bar from right to left):
+There are 5 main pages in the project (home and then menu bar from right to left):
 
 * Home, it shows a landing page and some info regarding the site, showing some wineries and a call-to-action to register to the mailing list (this does not send real emails and does not store inserted email in any db).
   
@@ -275,7 +275,7 @@ One of the most useful and rewarding (for the devs that need to bill for somethi
 
 I'd really like to change the Wineries page to create a map with an easy click on map feature that can open a country to show the wineries that are using this platform, this can induce more customers to connect their wallet and try to buy something.
 
-Also widening the border or selling only bottles of wine to sell any alcoholic beverage could be an idea.
+Also widening the range of product sales from only bottles of wine to any alcoholic beverage could be an idea.
 
 
 ## Missing features <a name="missing_features"></a>
